@@ -1,6 +1,5 @@
 '''
 Binary Search using recursion
-
 '''
 def binary_search(arr,value):
   if len(arr)==0 or (len(arr)==1 and arr[0]!=value):

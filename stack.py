@@ -1,6 +1,5 @@
 """ 
 Stack implementation using Single Linked List
-
 """
 
 class Element(object):
