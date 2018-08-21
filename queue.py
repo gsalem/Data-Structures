@@ -7,7 +7,8 @@ class Queue:
         self.storage = [head]
 
     def display(self):
-        return print(self.storage)
+        print(self.storage)
+        return
 
     def enqueue(self, new_element):
           self.storage.append(new_element)

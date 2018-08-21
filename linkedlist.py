@@ -25,7 +25,8 @@ class LinkedList(object):
         while current.next != None:
             current = current.next
             list.append(current.data)
-        return print(list)
+        print(list)
+        return
     
     # get length of linked list
     def len(self): 
@@ -40,19 +41,22 @@ class LinkedList(object):
     def get(self, index):
         # error check
         if index > self.len() or index < 0:
-            return print ("ERROR: Index out of range")
+            print ("ERROR: Index out of range")
+            return
         current = self.head
         current_index = 0
         while True:
             current = current.next
             if current_index == index:
-                return print(current.data)
+                print(current.data)
+                return
             current_index += 1
     
     # delete node at given index
     def delete(self, index):
         if index > self.len() or index < 0:
-            return print ("ERROR: Index out of range")
+            print ("ERROR: Index out of range")
+            return
         current = self.head
         current_index = 0
         while True:
@@ -66,7 +70,8 @@ class LinkedList(object):
     # insert node at given index
     def insert(self, data, index):
         if index > self.len() or index < 0:
-            return print ("ERROR: Index out of range")
+            print ("ERROR: Index out of range")
+            return
         current = self.head
         current_index = 0
         while True:
