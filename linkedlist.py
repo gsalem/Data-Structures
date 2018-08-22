@@ -49,8 +49,7 @@ class LinkedList(object):
 		while True:
 				current = current.next
 				if current_index == index:
-						print(current.data)
-						return
+						return current.data
 				current_index += 1
 
 	# delete node at given index
@@ -87,36 +86,39 @@ class LinkedList(object):
 				return
 			current_index += 1
 
-	def reverse(self): # Reverse linked list iteratively
-		current = self.head
+ 	# Reverse linked list iteratively
+	def reverse(self):
+		current = self.head.next
 		prev = None
 		while current:
 			next_ = current.next
 			current.next = prev
 			prev = current
 			current = next_
-		self.head = prev
+		head = node()
+		head.next = prev
+		self.head = head
+		
+		
  
 		
 #####  Test cases  #####
 list = LinkedList()
-
-# display list
-list.display()
 
 # append some values
 list.append(0)
 list.append(1)
 list.append(2)
 list.append(3)
+list.append(10)
 list.append(4)
 list.display()
 
 # get length of linked list
 print ("The length of this linked list is", list.len())
 
-# get data of given index
-list.get(4)
+# # get data of given index
+print("Value at index 4 is", list.get(4))
 
 # delete node of given index
 list.delete(3)
@@ -125,7 +127,7 @@ list.delete(999)
 list.delete(-999)
 
 # insert node of given index
-list.insert("insert", 3)
+list.insert("str", 3)
 list.display()
 list.insert(3, 999)
 list.insert(3, -999)
