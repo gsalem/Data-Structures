@@ -1,92 +1,104 @@
 """ Linked List Implementation """
 
 class node(object):
-    def __init__(self, data = None):
-        self.data = data
-        self.next = None
+	def __init__(self, data=None):
+		self.data = data
+		self.next = None
+
 
 class LinkedList(object):
-    def __init__(self, head=None):
-        self.head = node()
+	def __init__(self, head=None):
+		self.head = node()
 
-    # append to list
-    def append(self, data):
-        new_node = node(data)  
-        current = self.head # head of the list
-        while current.next != None: # while not last node
-            current = current.next  # traverse
-        current.next = new_node # append
-
-
-    # display list
-    def display(self):
-        list = []
-        current = self.head
-        while current.next != None:
-            current = current.next
-            list.append(current.data)
-        print(list)
-        return
-    
-    # get length of linked list
-    def len(self): 
-        length = 0
-        current = self.head
-        while current.next != None:
-            current = current.next
-            length += 1
-        return length
-
-    # get node at given index
-    def get(self, index):
-        # error check
-        if index > self.len() or index < 0:
-            print ("ERROR: Index out of range")
-            return
-        current = self.head
-        current_index = 0
-        while True:
-            current = current.next
-            if current_index == index:
-                print(current.data)
-                return
-            current_index += 1
-    
-    # delete node at given index
-    def delete(self, index):
-        if index > self.len() or index < 0:
-            print ("ERROR: Index out of range")
-            return
-        current = self.head
-        current_index = 0
-        while True:
-            prev_node = current
-            current = current.next
-            if current_index == index:
-                prev_node.next = current.next
-                return
-            current_index += 1
-
-    # insert node at given index
-    def insert(self, data, index):
-        if index > self.len() or index < 0:
-            print ("ERROR: Index out of range")
-            return
-        current = self.head
-        current_index = 0
-        while True:
-            prev_node = current
-            current = current.next
-            if current_index == index:
-                new_node = node(data)
-                prev_node.next = new_node
-                new_node.next = current
-                return
-            current_index += 1
+	# append to list
+	def append(self, data):
+		new_node = node(data)
+		current = self.head  # head of the list
+		while current.next != None:  # while not last node
+				current = current.next  # traverse
+		current.next = new_node  # append
 
 
+	# display list
+	def display(self):
+		list = []
+		current = self.head
+		while current.next != None:
+			current = current.next
+			list.append(current.data)
+		print(list)
+		return
+
+	# get length of linked list
+	def len(self):
+		length = 0
+		current = self.head
+		while current.next != None:
+				current = current.next
+				length += 1
+		return length
+
+	# get node at given index
+	def get(self, index):
+		# error check
+		if index > self.len() or index < 0:
+				print ("ERROR: Index out of range")
+				return
+		current = self.head
+		current_index = 0
+		while True:
+				current = current.next
+				if current_index == index:
+						print(current.data)
+						return
+				current_index += 1
+
+	# delete node at given index
+	def delete(self, index):
+		if index > self.len() or index < 0:
+			print ("ERROR: Index out of range")
+			return
+		current = self.head
+		current_index = 0
+		while True:
+			prev = current
+			current = current.next
+			if current_index == index:
+				prev.next = current.next
+				return
+			current_index += 1
+
+	# insert node at given index
+	def insert(self, data, index):
+		# Error Check
+		if index > self.len() or index < 0:
+			print ("ERROR: Index out of range")
+			return
+		prev = None
+		current = self.head
+		current_index = 0
+		while True:
+			prev = current
+			current = current.next
+			if current_index == index:
+				new_node = node(data)
+				prev.next = new_node
+				new_node.next = current
+				return
+			current_index += 1
+
+	def reverse(self): # Reverse linked list iteratively
+		current = self.head
+		prev = None
+		while current:
+			next_ = current.next
+			current.next = prev
+			prev = current
+			current = next_
+		self.head = prev
+ 
+		
 #####  Test cases  #####
-
 list = LinkedList()
 
 # display list
@@ -117,3 +129,7 @@ list.insert("insert", 3)
 list.display()
 list.insert(3, 999)
 list.insert(3, -999)
+
+list.display()
+list.reverse()
+list.display()
